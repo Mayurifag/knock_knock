@@ -8,13 +8,11 @@ module KnockKnock
 
     def initialize(payload: {}, token: nil, verify_options: {})
       if token.present?
-        @payload, _ = JWT.decode token.to_s, decode_key, true, options.merge(verify_options)
+        @payload, _ = JWT.decode(token.to_s, decode_key, true, Claims.to_decode.merge(verify_options))
         @token = token
       else
-        @payload = claims.merge(payload)
-        @token = JWT.encode @payload,
-          secret_key,
-          KnockKnock.token_signature_algorithm
+        @payload = Claims.to_encode.merge(payload)
+        @token = JWT.encode @payload, secret_key, KnockKnock.token_signature_algorithm
       end
     end
 
@@ -38,43 +36,6 @@ module KnockKnock
 
     def decode_key
       KnockKnock.token_public_key || secret_key
-    end
-
-    def options
-      verify_claims.merge(
-        algorithm: KnockKnock.token_signature_algorithm,
-      )
-    end
-
-    def claims
-      claims_hash = {}
-      claims_hash[:exp] = token_lifetime if verify_lifetime?
-      claims_hash[:aud] = token_audience if verify_audience?
-      claims_hash
-    end
-
-    def token_lifetime
-      KnockKnock.token_lifetime.from_now.to_i if verify_lifetime?
-    end
-
-    def verify_lifetime?
-      KnockKnock.token_lifetime.present?
-    end
-
-    def verify_claims
-      {
-        aud: token_audience,
-        verify_aud: verify_audience?,
-        verify_expiration: verify_lifetime?,
-      }
-    end
-
-    def token_audience
-      verify_audience? && KnockKnock.token_audience.call
-    end
-
-    def verify_audience?
-      KnockKnock.token_audience.present?
     end
   end
 end
