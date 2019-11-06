@@ -23,7 +23,7 @@ module KnockKnock
     not_found_exception_class_name.to_s.constantize
   end
 
-  # Default way to setup KnockKnock. Run `rails generate knock:install` to create
+  # Default way to setup KnockKnock. Run `rails generate knock_knock:install` to create
   # a fresh initializer with all configuration values.
   def self.setup
     yield self
