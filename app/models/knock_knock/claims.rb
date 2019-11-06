@@ -13,7 +13,7 @@ module KnockKnock
           algorithm: KnockKnock.token_signature_algorithm,
           aud: token_audience,
           verify_aud: verify_audience?,
-          verify_expiration: verify_lifetime?
+          verify_expiration: verify_lifetime?,
         }
       end
 
