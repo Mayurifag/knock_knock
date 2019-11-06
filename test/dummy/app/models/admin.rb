@@ -4,8 +4,7 @@ class Admin < ApplicationRecord
   has_secure_password
 
   def self.from_token_request(request)
-    email = request.params["auth"] && request.params["auth"]["email"]
-    find_by email: email
+    find_by email: request.params["email"]
   end
 
   def self.from_token_payload(payload)

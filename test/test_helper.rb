@@ -16,18 +16,18 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActiveSupport::TestCase.fixture_path = File.expand_path("fixtures", __dir__)
   # ActionDispatch::IntegrationTest.fixture_path = ActiveSupport::TestCase.fixture_path
-  # ActiveSupport::TestCase.file_fixture_path = ActiveSupport::TestCase.fixture_path + "/files"
+  ActiveSupport::TestCase.file_fixture_path = ActiveSupport::TestCase.fixture_path + "/files"
   ActiveSupport::TestCase.fixtures :all
 end
 
-# Make sure knock_knock global configuration is reset before every tests
+# Make sure global configuration is reset before every tests
 # to avoid order dependent failures.
 class ActiveSupport::TestCase
-  setup :reset_knock_configuration
+  setup :reset_configuration
 
   private
 
-  def reset_knock_configuration
+  def reset_configuration
     KnockKnock.token_signature_algorithm = "HS256"
     KnockKnock.token_secret_signature_key = -> { Rails.application.credentials.fetch(:secret_key_base) }
     KnockKnock.token_public_key = nil

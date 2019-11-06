@@ -15,6 +15,7 @@ require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
 require "knock_knock"
+require "knock_knock/authenticable"
 
 module Dummy
   class Application < Rails::Application
