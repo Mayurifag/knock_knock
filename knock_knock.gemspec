@@ -5,14 +5,14 @@ require "knock_knock/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
-  spec.name        = "knock_knock"
-  spec.version     = KnockKnock::VERSION
-  spec.authors     = ["Mayurifag"]
-  spec.email       = ["farazeus@gmail.com"]
-  spec.homepage    = "https://github.com/Mayurifag/knock_knock"
-  spec.summary     = "Summary of KnockKnock."
+  spec.name = "knock_knock"
+  spec.version = KnockKnock::VERSION
+  spec.authors = ["Mayurifag"]
+  spec.email = ["farazeus@gmail.com"]
+  spec.homepage = "https://github.com/Mayurifag/knock_knock"
+  spec.summary = "Summary of KnockKnock."
   spec.description = "Description of KnockKnock."
-  spec.license     = "MIT"
+  spec.license = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.

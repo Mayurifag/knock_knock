@@ -1,8 +1,8 @@
 pre-push:
   parallel: true
   commands:
-    # rspec:
-    #   runner: bundle exec rspec --fail-fast
+    rspec:
+      runner: bundle exec rails test
     rubocop:
       runner: bundle exec standardrb
 
