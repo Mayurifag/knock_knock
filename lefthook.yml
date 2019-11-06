@@ -1,0 +1,22 @@
+pre-push:
+  parallel: true
+  commands:
+    # rspec:
+    #   runner: bundle exec rspec --fail-fast
+    rubocop:
+      runner: bundle exec standardrb
+
+commands: &commands
+  bundle-install:
+    files: git diff --name-only HEAD master
+    glob: '{Gemfile,Gemfile.lock}'
+    run: bundle install
+
+post-checkout:
+  commands: *commands
+
+post-merge:
+  commands: *commands
+
+post-rewrite:
+  commands: *commands
