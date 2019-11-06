@@ -19,3 +19,19 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   # ActiveSupport::TestCase.file_fixture_path = ActiveSupport::TestCase.fixture_path + "/files"
   ActiveSupport::TestCase.fixtures :all
 end
+
+# Make sure knock_knock global configuration is reset before every tests
+# to avoid order dependent failures.
+class ActiveSupport::TestCase
+  setup :reset_knock_configuration
+
+  private
+
+  def reset_knock_configuration
+    KnockKnock.token_signature_algorithm = "HS256"
+    KnockKnock.token_secret_signature_key = -> { Rails.application.credentials.fetch(:secret_key_base) }
+    KnockKnock.token_public_key = nil
+    KnockKnock.token_audience = nil
+    KnockKnock.token_lifetime = 1.day
+  end
+end
