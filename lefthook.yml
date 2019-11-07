@@ -1,3 +1,8 @@
+pre-commit:
+  commands:
+    standardrb:
+      runner: bundle exec standardrb
+
 pre-push:
   parallel: true
   commands:

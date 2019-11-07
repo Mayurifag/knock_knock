@@ -32,4 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "timecop"
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "standard"
+  spec.add_development_dependency "minitest-retry"
 end
