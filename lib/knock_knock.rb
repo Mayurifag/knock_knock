@@ -1,4 +1,5 @@
 require "knock_knock/engine"
+require_dependency 'knock_knock/authenticable'
 
 module KnockKnock
   mattr_accessor :token_lifetime

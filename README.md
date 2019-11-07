@@ -1,14 +1,9 @@
-# KnockKnock
-Short description and motivation.
+# gem knock_knock
 
-## Usage
-How to use my plugin.
-
-## Installation
-Add this line to your application's Gemfile:
+lalala work in progress im gonna write something here.
 
 ```ruby
-gem 'knock_knock'
+gem 'knock_knock', github: 'Mayurifag/knock_knock'
 ```
 
 And then execute:
@@ -16,13 +11,11 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
-```bash
-$ gem install knock_knock
-```
-
-## Contributing
-Contribution directions go here.
-
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## TODO:
+
+[] Readme and gemspec summaries etc +badges +ci beautify
+[] changelog
+[] COC
